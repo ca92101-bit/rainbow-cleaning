@@ -1,0 +1,49 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Dialog from "./Dialog";
+import HeroForm from "./HeroForm";
+import { useState } from 'react';
+
+const Overview = () => {
+
+    const [quoteOpen, setQuoteOpen] = useState(false);
+
+    return (
+        <div className='bg-white py-[50px]'>
+            <div className="max-w-[1340px] mx-auto w-[90%] grid gap-[30px] lg:grid-cols-2 lg:items-stretch">
+                <div className="grid">
+                    <h2 className="roboto text-[41px] font-medium text-gray-4 pb-[10px] mb-[30px] leading-[41px] text-center capitalize">
+                        Professional Carpet Cleaning And Restoration Services In San Diego County
+
+                    </h2>
+                    <p className="pb-[21px] text-[21px] text-black leading-[21px] ">
+                        At Rainbow Carpet Dyeing and Cleaning, we’re a family-owned business. With over 40 years of experience and <Link to="#" className="text-check font-bold">IICRC Certification</Link>, our expert team is equipped to handle your toughest cleaning challenges. We offer reliable, top-rated services that our customers trust. Our motto, “We take the stress out of your mess,” reflects our commitment to providing hassle-free, effective cleaning solutions.
+                    </p>
+                    <p className="pb-[21px] text-[21px] text-black leading-[21px] mb-[30px] ">
+                        We use the latest technology for all of our services. Our deep-cleaning methods are designed to remove dirt, stains, and allergens, leaving your home or office looking and feeling fresh.
+                    </p>
+                    <button
+                        onClick={() => setQuoteOpen(true)} className='cursor-pointer inline-block w-fit  justify-self-center md:justify-self-start  text-[20px]  text-white font-bold rounded-[30px] py-[6px] px-[20px]  bg-[#37d123] uppercase transition-all duration-100 ease-in  text-shadow-[0em_0.1em_0.1em_rgba(0,0,0,0.4)]  shadow-[0px_2px_18px_0px_rgba(12,113,195,0.63)] leading-[34px]'>
+                        Request a Quote</button>
+                </div>
+                <div className="h-auto lg:h-[500px]">
+                    <video
+                        src="/Live_Carpet_Cleaning_Video.mov"
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                    />
+                </div>
+            </div>
+            <Dialog open={quoteOpen} onClose={() => setQuoteOpen(false)}>
+                <div className="p-6">
+                    <HeroForm onSuccess={() => setQuoteOpen(false)} />
+                </div>
+            </Dialog>
+        </div>
+    )
+}
+
+export default Overview
